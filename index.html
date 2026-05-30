@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & LinkedIn Preview Optimization -->
+    <title>Arindam Nag — Corporate Finance & Quant Engineering</title>
+    <meta name="description" content="Portfolio of Arindam Nag. Combining corporate finance, strategic FP&A depth, and quantitative engineering. Learn more about OUP, Jindal Stainless, and quant projects.">
+    <meta name="keywords" content="Arindam Nag, FP&A, Corporate Finance, Quant Engineering, CFA Candidate, Python, Financial Modeling, Options Pricing, Bloomberg">
+    <meta name="author" content="Arindam Nag">
+
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arindamnag.com/">
+    <meta property="og:title" content="Arindam Nag — Corporate Finance & Quant Engineering">
+    <meta property="og:description" content="Finance first. Code as a weapon. Explore the 6-act storytelling portfolio of a quant-driven FP&A professional.">
+    <meta property="og:image" content="assets/og_image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Arindam Nag — Corporate Finance & Quant Engineering">
+    <meta property="twitter:description" content="Finance first. Code as a weapon. Explore the 6-act storytelling portfolio of a quant-driven FP&A professional.">
+    <meta property="twitter:image" content="assets/og_image.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+
+    <!-- Bloomberg Top Ticker Bar -->
+    <div id="top-ticker-bar" class="top-ticker-bar monospace">
+        <div class="ticker-track" id="top-ticker-track">
+            <!-- Simulated in JS -->
+        </div>
+    </div>
+
+    <!-- Grain Noise Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="custom-cursor">
+        <div class="cursor-cross"></div>
+        <div class="cursor-label"></div>
+    </div>
+
+    <!-- 1.5s Terminal Loading Screen -->
+    <div id="loader" class="terminal-loader">
+        <div class="loader-content">
+            <span id="loader-text"></span>
+            <span class="loader-cursor">_</span>
+        </div>
+    </div>
+
+    <!-- Navigation Floating Pill -->
+    <nav class="nav-pill">
+        <div class="nav-links">
+            <a href="#hero" class="nav-link active" data-target="hero">HOME</a>
+            <span class="nav-divider">·</span>
+            <a href="#about" class="nav-link" data-target="about">WORK</a>
+            <span class="nav-divider">·</span>
+            <a href="#projects" class="nav-link" data-target="projects">PROJECTS</a>
+            <span class="nav-divider">·</span>
+            <a href="#contact" class="nav-link" data-target="contact">CONTACT</a>
+        </div>
+    </nav>
+
+    <!-- MAIN SCROLL CONTAINER (Lenis controlled) -->
+    <main id="main-content">
+
+        <!-- ACT I — Hero / Opening -->
+        <section id="hero" class="act-section flex-center">
+            
+            <!-- Live Order Book & Trade Tape Background Grid -->
+            <div id="order-book-bg" class="order-book-grid">
+                <div class="order-book-column bid-side">
+                    <div class="ob-header">BID (BUY)</div>
+                    <div class="ob-list" id="bid-list">
+                        <!-- Simulated dynamically in JS -->
+                    </div>
+                </div>
+                <div class="order-book-middle flex-center">
+                    <div class="spread-container monospace">
+                        <div class="spread-label">SPREAD</div>
+                        <div id="ob-spread" class="spread-val">0.30</div>
+                        <div class="mid-label">MID PRICE</div>
+                        <div id="ob-mid" class="mid-val">1248.65</div>
+                    </div>
+                </div>
+                <div class="order-book-column ask-side">
+                    <div class="ob-header">ASK (SELL)</div>
+                    <div class="ob-list" id="ask-list">
+                        <!-- Simulated dynamically in JS -->
+                    </div>
+                </div>
+                <div class="order-book-column tape-side">
+                    <div class="ob-header">TIME & SALES</div>
+                    <div id="trade-tape" class="trade-tape">
+                        <!-- Simulated dynamically in JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faint Matrix-style Financial Data Rain -->
+            <div id="data-rain-container"></div>
+
+            <!-- Three.js Canvas Container -->
+            <div id="canvas-container"></div>
+
+            <!-- Main Hero Interface -->
+            <div class="hero-container container">
+                <div class="hero-main-content">
+                    <div class="hero-meta-label monospace gold-text">> SYS_INITIALIZED: 2026.05.30</div>
+                    
+                    <h1 class="hero-name serif-display" id="hero-name-reveal">
+                        ARINDAM NAG
+                    </h1>
+
+                    <div class="hero-manifesto-sub">
+                        <p class="manifesto-line serif-display">"Finance first. Code as a weapon."</p>
+                        <div class="typewriter-console monospace">
+                            <span class="console-prompt">></span>
+                            <span id="typewriter-text"></span><span class="blinking-cursor">_</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta-group">
+                        <a href="#about" class="btn btn-terminal hover-magnet" id="cta-explore">
+                            <span class="btn-text">[ ACCESS RECORD ]</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bloomberg Live Candlestick Widget -->
+                <div class="hero-chart-widget monospace hover-magnet">
+                    <div class="widget-header">
+                        <span class="gold-text">FEED: NAG.NSE (MINI_OHLC)</span>
+                        <span class="live-blink">● LIVE</span>
+                    </div>
+                    <div class="widget-body flex-center">
+                        <canvas id="live-candle-canvas" width="280" height="120"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scrolling Skill Ticker -->
+            <div class="ticker-wrapper">
+                <div class="ticker-content monospace">
+                    <span>FP&A</span> <span class="gold-text">·</span>
+                    <span>DCF VALUATION</span> <span class="gold-text">·</span>
+                    <span>LBO MODELING</span> <span class="gold-text">·</span>
+                    <span>PYTHON</span> <span class="gold-text">·</span>
+                    <span>OPTIONS PRICING</span> <span class="gold-text">·</span>
+                    <span>POWER BI</span> <span class="gold-text">·</span>
+                    <span>MONTE CARLO SIMULATIONS</span> <span class="gold-text">·</span>
+                    <span>FACTOR MODELS</span> <span class="gold-text">·</span>
+                    <span>FP&A</span> <span class="gold-text">·</span>
+                    <span>DCF VALUATION</span> <span class="gold-text">·</span>
+                    <span>LBO MODELING</span> <span class="gold-text">·</span>
+                    <span>PYTHON</span> <span class="gold-text">·</span>
+                    <span>OPTIONS PRICING</span> <span class="gold-text">·</span>
+                    <span>POWER BI</span> <span class="gold-text">·</span>
+                    <span>MONTE CARLO SIMULATIONS</span> <span class="gold-text">·</span>
+                    <span>FACTOR MODELS</span>
+                </div>
+            </div>
+
+            <!-- Scroll Candlestick Indicator -->
+            <a href="#about" class="scroll-indicator flex-center hover-magnet">
+                <div class="indicator-label monospace">SCROLL</div>
+                <svg class="candlestick-arrow" viewBox="0 0 24 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- High/Low Wick -->
+                    <line x1="12" y1="0" x2="12" y2="50" stroke="currentColor" stroke-width="1.5"/>
+                    <!-- Open/Close Candle Body -->
+                    <rect x="7" y="10" width="10" height="24" fill="var(--bg-color)" stroke="currentColor" stroke-width="1.5"/>
+                    <!-- Arrow down overlay inside wick -->
+                    <path d="M9 43L12 47L15 43" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </section>
+
+
+        <!-- ACT II — The Story (About) -->
+        <section id="about" class="act-section">
+            <div class="container section-padding">
+                <div class="section-header">
+                    <span class="section-num monospace">01 /</span>
+                    <h2 class="section-title serif-display">THE STORY</h2>
+                </div>
+
+                <div class="about-grid">
+                    <!-- Left Column: Geometric Allocation SVG -->
+                    <div class="about-visual flex-center">
+                        <div class="geometric-container">
+                            <svg class="geometric-shapes" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="200" cy="200" r="160" stroke="var(--border-color)" stroke-width="1" stroke-dasharray="4 4" />
+                                <circle cx="200" cy="200" r="110" stroke="var(--accent-color)" stroke-width="1.5" stroke-opacity="0.7"/>
+                                <circle cx="200" cy="200" r="60" stroke="var(--border-color)" stroke-width="1" />
+                                <line x1="200" y1="20" x2="200" y2="380" stroke="var(--border-color)" stroke-width="0.5" />
+                                <line x1="20" y1="200" x2="380" y2="200" stroke="var(--border-color)" stroke-width="0.5" />
+                                <!-- Concentric grid coordinates -->
+                                <circle cx="200" cy="200" r="3" fill="var(--accent-color)" />
+                                <rect x="140" y="140" width="120" height="120" stroke="var(--border-color)" stroke-width="1" stroke-dasharray="2 2" transform="rotate(45 200 200)"/>
+                                <path d="M 200 40 A 160 160 0 0 1 352 150" stroke="var(--accent-color)" stroke-width="3" stroke-linecap="round" id="rotary-arc-1"/>
+                                <path d="M 50 250 A 160 160 0 0 1 120 70" stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" id="rotary-arc-2"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Narrative Bio -->
+                    <div class="about-content">
+                        <p class="narrative-paragraph slide-up-text">
+                            Corporate finance is often reduced to historical reports and backward-looking spreadsheets. I build forward-looking frameworks. As an FP&A professional, my mandate is capital efficiency, predictive modeling, and absolute decision-making speed.
+                        </p>
+                        <p class="narrative-paragraph slide-up-text">
+                            Technology isn’t a support function; it is the ultimate leverage. I merge quantitative engineering depth with financial theory—writing custom valuation, hedging, and simulation engines in Python and R to solve complex pricing problems in real time.
+                        </p>
+                        <p class="narrative-paragraph slide-up-text">
+                            From auditing working capital variances to backtesting commodity hedging strategies, I operate at the intersection of mathematical rigour and commercial reality. I build models that make decisions faster.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Bloomberg-style Toolchain Matrix -->
+                <div class="toolchain-panel monospace">
+                    <div class="panel-header gold-text">> CORE_SYSTEMS_AND_TOOLCHAIN.INF</div>
+                    <div class="panel-grid">
+                        <div class="panel-col">
+                            <div class="gold-text" style="font-weight: 500; margin-bottom: 0.3rem;">LANGUAGES</div>
+                            <span>Python, R, C++, TypeScript, JavaScript (ES6+), SQL, HTML5 / CSS3</span>
+                        </div>
+                        <div class="panel-col">
+                            <div class="gold-text" style="font-weight: 500; margin-bottom: 0.3rem;">QUANT & MATH</div>
+                            <span>Pandas, NumPy, Scikit-Learn, XGBoost, LightGBM, TensorFlow, quantmod, PerformanceAnalytics, SHAP, tseries, quadprog</span>
+                        </div>
+                        <div class="panel-col">
+                            <div class="gold-text" style="font-weight: 500; margin-bottom: 0.3rem;">INFRASTRUCTURE & UI</div>
+                            <span>Supabase, PostgreSQL, Drizzle ORM, FastAPI, Node.js, Express, Streamlit, React 18/19, Vite, TailwindCSS, Chart.js, Recharts, Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloomberg-style Equity Curve Chart -->
+                <div class="equity-curve-wrapper">
+                    <div class="equity-header monospace">
+                        <span class="gold-text">PORTFOLIO TRAJECTORY (AUM_EFFICIENCY)</span>
+                        <span>INDEX: NAG.NSE</span>
+                    </div>
+                    <div class="equity-chart-container">
+                        <svg class="equity-chart-svg" viewBox="0 0 1000 250" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Grid lines -->
+                            <line x1="0" y1="50" x2="1000" y2="50" stroke="rgba(245, 240, 232, 0.05)" stroke-width="1"/>
+                            <line x1="0" y1="100" x2="1000" y2="100" stroke="rgba(245, 240, 232, 0.05)" stroke-width="1"/>
+                            <line x1="0" y1="150" x2="1000" y2="150" stroke="rgba(245, 240, 232, 0.05)" stroke-width="1"/>
+                            <line x1="0" y1="200" x2="1000" y2="200" stroke="rgba(245, 240, 232, 0.05)" stroke-width="1"/>
+                            
+                            <line x1="200" y1="0" x2="200" y2="250" stroke="rgba(245, 240, 232, 0.05)" stroke-width="1"/>
+                            <line x1="450" y1="0" x2="450" y2="250" stroke="rgba(245, 240, 232, 0.05)" stroke-width="1"/>
+                            <line x1="700" y1="0" x2="700" y2="250" stroke="rgba(245, 240, 232, 0.05)" stroke-width="1"/>
+                            <line x1="900" y1="0" x2="900" y2="250" stroke="rgba(245, 240, 232, 0.05)" stroke-width="1"/>
+
+                            <!-- Area under curve (filled gradient/solid) -->
+                            <path d="M 0 220 L 200 180 L 450 130 L 700 80 L 900 50 L 1000 30 L 1000 250 L 0 250 Z" fill="rgba(201, 168, 76, 0.04)" />
+
+                            <!-- The Curve -->
+                            <path d="M 0 220 L 200 180 L 450 130 L 700 80 L 900 50 L 1000 30" fill="none" stroke="var(--accent-color)" stroke-width="2.5" class="equity-path" />
+                            
+                            <!-- Dots for nodes -->
+                            <circle cx="200" cy="180" r="4" fill="var(--bg-color)" stroke="var(--accent-color)" stroke-width="2" class="equity-node" />
+                            <circle cx="450" cy="130" r="4" fill="var(--bg-color)" stroke="var(--accent-color)" stroke-width="2" class="equity-node" />
+                            <circle cx="700" cy="80" r="4" fill="var(--bg-color)" stroke="var(--accent-color)" stroke-width="2" class="equity-node" />
+                            <circle cx="900" cy="50" r="4" fill="var(--bg-color)" stroke="var(--accent-color)" stroke-width="2" class="equity-node" />
+                            <circle cx="1000" cy="30" r="4" fill="var(--bg-color)" stroke="var(--accent-color)" stroke-width="2" class="equity-node" />
+                        </svg>
+
+                        <!-- Labels overlaid absolute -->
+                        <div class="chart-label monospace" style="left: 0%; top: 88%;">INIT</div>
+                        <div class="chart-label monospace" style="left: 20%; top: 72%;">MSc Quant</div>
+                        <div class="chart-label monospace" style="left: 45%; top: 52%;">JSL Finance Intern</div>
+                        <div class="chart-label monospace" style="left: 70%; top: 32%;">OUP FP&A Analyst</div>
+                        <div class="chart-label monospace" style="left: 90%; top: 20%;">CFA Candidate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ACT III — Experience (The Journey) -->
+        <section id="experience" class="act-section">
+            <div class="container section-padding">
+                <div class="section-header">
+                    <span class="section-num monospace">02 /</span>
+                    <h2 class="section-title serif-display">THE JOURNEY</h2>
+                </div>
+
+                <div class="timeline-wrapper">
+                    <!-- Central SVG line that draws on scroll -->
+                    <div class="timeline-line-container">
+                        <svg class="timeline-svg-line" width="10" height="100%" viewBox="0 0 10 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="5" y1="0" x2="5" y2="100" stroke="var(--border-color)" stroke-width="2" stroke-dasharray="3 3"/>
+                            <line x1="5" y1="0" x2="5" y2="100" stroke="var(--accent-color)" stroke-width="2" class="timeline-progress-line"/>
+                        </svg>
+                    </div>
+
+                    <!-- Role Node 1 (Oxford University Press India) -->
+                    <div class="timeline-node" id="node-oup">
+                        <div class="node-dot"></div>
+                        <div class="timeline-card hover-magnet">
+                            <div class="card-meta monospace">
+                                <span class="role-duration">JUL 2025 — MAY 2026</span>
+                                <span class="gold-text">OXFORD UNIVERSITY PRESS INDIA</span>
+                            </div>
+                            <h3 class="role-title serif-display">Reporting & Automation Analyst — FP&A</h3>
+                            <div class="monospace gold-text" style="font-size: 0.75rem; margin-top: -1rem; margin-bottom: 1.5rem;">Noida, India</div>
+                            
+                            <div class="card-metrics-grid">
+                                <div class="metric-box">
+                                    <div class="metric-val monospace scramble-num" data-val="5" data-prefix="3w → " data-suffix="d">0</div>
+                                    <div class="metric-lbl monospace">Consolidation Speedup</div>
+                                </div>
+                                <div class="metric-box">
+                                    <div class="metric-val monospace scramble-num" data-val="500" data-prefix="" data-suffix="+">0+</div>
+                                    <div class="metric-lbl monospace">Daily Audited Elements</div>
+                                </div>
+                            </div>
+
+                            <p class="role-description">
+                                Led regional financial modeling, pricing analysis, and FP&A reporting. Engineered automated accounting pipelines in Python and R to consolidate complex ledger data, eliminating manual errors and accelerating quarterly audit workflows.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Role Node 2 (Jindal Stainless Ltd.) -->
+                    <div class="timeline-node" id="node-jsl">
+                        <div class="node-dot"></div>
+                        <div class="timeline-card hover-magnet">
+                            <div class="card-meta monospace">
+                                <span class="role-duration">MAY 2024 — AUG 2024</span>
+                                <span class="gold-text">JINDAL STAINLESS LTD.</span>
+                            </div>
+                            <h3 class="role-title serif-display">Finance Intern</h3>
+                            <div class="monospace gold-text" style="font-size: 0.75rem; margin-top: -1rem; margin-bottom: 1.5rem;">Hisar, Haryana</div>
+
+                            <div class="card-metrics-grid">
+                                <div class="metric-box">
+                                    <div class="metric-val monospace scramble-num" data-val="5" data-prefix="₹" data-suffix="Cr+">₹0Cr+</div>
+                                    <div class="metric-lbl monospace">Annualized Cost Savings</div>
+                                </div>
+                                <div class="metric-box">
+                                    <div class="metric-val monospace scramble-num" data-val="12" data-prefix="" data-suffix="+">0+</div>
+                                    <div class="metric-lbl monospace">Capital Projects Analyzed</div>
+                                </div>
+                            </div>
+
+                            <p class="role-description">
+                                Assisted the corporate finance division in capital budgeting and working capital audits. Developed dynamic financial modeling components to track cost variances and optimize supply-chain inventory allocation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ACT IV — Projects (The Portfolio) -->
+        <!-- Pinned Horizontal Scroll Section -->
+        <section id="projects" class="act-section projects-pinned-section">
+            <div class="projects-horizontal-scroll">
+                
+                <!-- Sticky Header (Slides left and remains visible or floats) -->
+                <div class="projects-intro-panel">
+                    <div class="section-header">
+                        <span class="section-num monospace">03 /</span>
+                        <h2 class="section-title serif-display">QUANT WIDGETS</h2>
+                        <p class="section-subtitle monospace">// HORIZONTAL WATCHLIST</p>
+                    </div>
+                </div>
+
+                <!-- Projects Cards Wrapper -->
+                <div class="projects-cards-container">
+                    
+                    <!-- Card 1: Quant Options Engine -->
+                    <div class="project-card-wrapper">
+                        <div class="project-card">
+                            <div class="card-side card-front">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.001</span>
+                                    <span class="gold-text">QUANT ENGINE</span>
+                                </div>
+                                <div class="sparkline-container">
+                                    <svg viewBox="0 0 200 80" class="sparkline-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M 0 60 Q 20 40 40 55 T 80 20 T 120 45 T 160 10 T 200 30" fill="none" stroke="var(--accent-color)" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-project-title serif-display">Quant Engine</h3>
+                                <div class="card-tech-front monospace">
+                                    <div class="tech-row"><span class="tech-label">CORE:</span> <span class="tech-value">Python, C++, FastAPI</span></div>
+                                    <div class="tech-row"><span class="tech-label">MATH:</span> <span class="tech-value">Black-Scholes, Dupire</span></div>
+                                </div>
+                                <div class="card-bottom monospace">
+                                    <span class="ticker-tag">[PY]</span>
+                                    <span class="ticker-tag">[C++]</span>
+                                    <span class="ticker-tag">[FASTAPI]</span>
+                                    <span class="flip-hint gold-text">[FLIP]</span>
+                                </div>
+                            </div>
+                            <div class="card-side card-back">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.001</span>
+                                    <span class="gold-text">INFO & STACK</span>
+                                </div>
+                                <p class="card-back-desc">
+                                    Options pricing & analytics engine using Black-Scholes, Merton Jump-Diffusion, and Dupire Local Volatility against live markets.
+                                </p>
+                                <div class="card-back-tools monospace">
+                                    <span class="tool-label">SYSTEMS:</span> <span class="tool-val">Python, C++, FastAPI, React, TS, Vite, Tailwind</span>
+                                    <br>
+                                    <span class="tool-label">QUANT/MATH:</span> <span class="tool-val">NumPy, Pandas, Recharts, CORS, Threading</span>
+                                </div>
+                                <div class="card-back-bottom">
+                                    <a href="https://github.com/arindam0025/Quant-Engine" target="_blank" class="btn-back-link monospace">> VIEW SOURCE</a>
+                                    <span class="flip-hint-back gold-text monospace">[BACK]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Smart Beta ML -->
+                    <div class="project-card-wrapper">
+                        <div class="project-card">
+                            <div class="card-side card-front">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.002</span>
+                                    <span class="gold-text">SMART BETA ML</span>
+                                </div>
+                                <div class="sparkline-container">
+                                    <svg viewBox="0 0 200 80" class="sparkline-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M 0 70 L 30 50 L 60 60 L 90 30 L 120 40 L 150 15 L 200 5" fill="none" stroke="var(--accent-color)" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-project-title serif-display">Smart Beta ML</h3>
+                                <div class="card-tech-front monospace">
+                                    <div class="tech-row"><span class="tech-label">CORE:</span> <span class="tech-value">Python, Streamlit</span></div>
+                                    <div class="tech-row"><span class="tech-label">MATH:</span> <span class="tech-value">XGBoost, LSTM, Fred API</span></div>
+                                </div>
+                                <div class="card-bottom monospace">
+                                    <span class="ticker-tag">[PY]</span>
+                                    <span class="ticker-tag">[ML]</span>
+                                    <span class="ticker-tag">[LSTM]</span>
+                                    <span class="flip-hint gold-text">[FLIP]</span>
+                                </div>
+                            </div>
+                            <div class="card-side card-back">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.002</span>
+                                    <span class="gold-text">INFO & STACK</span>
+                                </div>
+                                <p class="card-back-desc">
+                                    Smart Beta tilt predictor constructing 164 Z-score normalised, orthogonalised factors over 25 years of S&P 500 data.
+                                </p>
+                                <div class="card-back-tools monospace">
+                                    <span class="tool-label">SYSTEMS:</span> <span class="tool-val">Python, Jupyter, Streamlit, FRED API, yfinance</span>
+                                    <br>
+                                    <span class="tool-label">ML/MATH:</span> <span class="tool-val">Scikit-Learn, XGBoost, LightGBM, Keras (LSTM)</span>
+                                </div>
+                                <div class="card-back-bottom">
+                                    <a href="https://github.com/arindam0025/smart-beta-ml-pipeline" target="_blank" class="btn-back-link monospace">> VIEW SOURCE</a>
+                                    <span class="flip-hint-back gold-text monospace">[BACK]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Forex Backtest -->
+                    <div class="project-card-wrapper">
+                        <div class="project-card">
+                            <div class="card-side card-front">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.003</span>
+                                    <span class="gold-text">FOREX BACKTEST</span>
+                                </div>
+                                <div class="sparkline-container">
+                                    <svg viewBox="0 0 200 80" class="sparkline-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M 0 10 L 40 40 L 80 20 L 120 60 L 160 30 L 200 70" fill="none" stroke="var(--accent-color)" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-project-title serif-display">Forex Backtest</h3>
+                                <div class="card-tech-front monospace">
+                                    <div class="tech-row"><span class="tech-label">CORE:</span> <span class="tech-value">Python, Streamlit</span></div>
+                                    <div class="tech-row"><span class="tech-label">MATH:</span> <span class="tech-value">Pandas, CVD, OFI, ATR</span></div>
+                                </div>
+                                <div class="card-bottom monospace">
+                                    <span class="ticker-tag">[PY]</span>
+                                    <span class="ticker-tag">[OANDA]</span>
+                                    <span class="ticker-tag">[PLOTLY]</span>
+                                    <span class="flip-hint gold-text">[FLIP]</span>
+                                </div>
+                            </div>
+                            <div class="card-side card-back">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.003</span>
+                                    <span class="gold-text">INFO & STACK</span>
+                                </div>
+                                <p class="card-back-desc">
+                                    Forex strategy simulator running Trend, Mean Reversion, and Breakout models with realistic ATR stops, spreads, and slippage.
+                                </p>
+                                <div class="card-back-tools monospace">
+                                    <span class="tool-label">SYSTEMS:</span> <span class="tool-val">Python, Streamlit, OANDA API, pytest</span>
+                                    <br>
+                                    <span class="tool-label">MATH/VIZ:</span> <span class="tool-val">Pandas, NumPy, yfinance, Plotly (CVD & OFI)</span>
+                                </div>
+                                <div class="card-back-bottom">
+                                    <a href="https://github.com/arindam0025/forex-live-backtest-la" target="_blank" class="btn-back-link monospace">> VIEW SOURCE</a>
+                                    <span class="flip-hint-back gold-text monospace">[BACK]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Quant Suite India -->
+                    <div class="project-card-wrapper">
+                        <div class="project-card">
+                            <div class="card-side card-front">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.004</span>
+                                    <span class="gold-text">QUANT SUITE IN</span>
+                                </div>
+                                <div class="sparkline-container">
+                                    <svg viewBox="0 0 200 80" class="sparkline-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M 0 50 Q 50 10 100 50 T 200 50" fill="none" stroke="var(--accent-color)" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-project-title serif-display">Quant Suite India</h3>
+                                <div class="card-tech-front monospace">
+                                    <div class="tech-row"><span class="tech-label">CORE:</span> <span class="tech-value">R Language, quantmod</span></div>
+                                    <div class="tech-row"><span class="tech-label">MATH:</span> <span class="tech-value">CAPM, Fama-French, VaR</span></div>
+                                </div>
+                                <div class="card-bottom monospace">
+                                    <span class="ticker-tag">[R]</span>
+                                    <span class="ticker-tag">[QUANT]</span>
+                                    <span class="ticker-tag">[BSE/NSE]</span>
+                                    <span class="flip-hint gold-text">[FLIP]</span>
+                                </div>
+                            </div>
+                            <div class="card-side card-back">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.004</span>
+                                    <span class="gold-text">INFO & STACK</span>
+                                </div>
+                                <p class="card-back-desc">
+                                    Comprehensive quantitative research suite in R analyzing NSE/BSE equities, risk metrics, factor pricing, and simulations.
+                                </p>
+                                <div class="card-back-tools monospace">
+                                    <span class="tool-label">SYSTEMS:</span> <span class="tool-val">R language, quantmod, zoo, quadprog, corrplot</span>
+                                    <br>
+                                    <span class="tool-label">QUANT/MATH:</span> <span class="tool-val">CAPM, Fama-French 3-Factor, GBM Monte Carlo, VaR/CVaR</span>
+                                </div>
+                                <div class="card-back-bottom">
+                                    <a href="https://github.com/arindam0025/Quant-Suite-Report-Indian-Equity-Analysis-2020-2025-Portfolio-Risk-Options-and-Forecasting-Models" target="_blank" class="btn-back-link monospace">> VIEW SOURCE</a>
+                                    <span class="flip-hint-back gold-text monospace">[BACK]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: AUROVA -->
+                    <div class="project-card-wrapper">
+                        <div class="project-card">
+                            <div class="card-side card-front">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.005</span>
+                                    <span class="gold-text">AUROVA DASHBOARD</span>
+                                </div>
+                                <div class="sparkline-container">
+                                    <svg viewBox="0 0 200 80" class="sparkline-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M 0 20 L 50 60 L 100 15 L 150 45 L 200 10" fill="none" stroke="var(--accent-color)" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-project-title serif-display">AUROVA</h3>
+                                <div class="card-tech-front monospace">
+                                    <div class="tech-row"><span class="tech-label">FRONTEND:</span> <span class="tech-value">React, TS, TanStack</span></div>
+                                    <div class="tech-row"><span class="tech-label">BACKEND:</span> <span class="tech-value">Supabase, Postgres, Drizzle</span></div>
+                                </div>
+                                <div class="card-bottom monospace">
+                                    <span class="ticker-tag">[REACT]</span>
+                                    <span class="ticker-tag">[NODE]</span>
+                                    <span class="ticker-tag">[DB]</span>
+                                    <span class="flip-hint gold-text">[FLIP]</span>
+                                </div>
+                            </div>
+                            <div class="card-side card-back">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.005</span>
+                                    <span class="gold-text">INFO & STACK</span>
+                                </div>
+                                <p class="card-back-desc">
+                                    Full-stack portfolio manager (Supabase, Drizzle ORM) integrating live prices from Alpha Vantage and AI-driven allocation advice.
+                                </p>
+                                <div class="card-back-tools monospace">
+                                    <span class="tool-label">FRONTEND:</span> <span class="tool-val">React 18, TS, TanStack Query, Radix UI</span>
+                                    <br>
+                                    <span class="tool-label">BACKEND/DB:</span> <span class="tool-val">Node, Express, Supabase, Postgres, Drizzle ORM, Alpha Vantage API</span>
+                                </div>
+                                <div class="card-back-bottom">
+                                    <a href="https://github.com/arindam0025/AUROVA" target="_blank" class="btn-back-link monospace">> VIEW SOURCE</a>
+                                    <span class="flip-hint-back gold-text monospace">[BACK]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Commodity Price Predictor -->
+                    <div class="project-card-wrapper">
+                        <div class="project-card">
+                            <div class="card-side card-front">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.006</span>
+                                    <span class="gold-text">COMMODITY FC</span>
+                                </div>
+                                <div class="sparkline-container">
+                                    <svg viewBox="0 0 200 80" class="sparkline-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M 0 75 Q 30 70 60 40 T 120 30 T 180 15 L 200 20" fill="none" stroke="var(--accent-color)" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-project-title serif-display">Commodity FC</h3>
+                                <div class="card-tech-front monospace">
+                                    <div class="tech-row"><span class="tech-label">CORE:</span> <span class="tech-value">Python, Streamlit</span></div>
+                                    <div class="tech-row"><span class="tech-label">MATH:</span> <span class="tech-value">ARIMA, XGBoost, SHAP</span></div>
+                                </div>
+                                <div class="card-bottom monospace">
+                                    <span class="ticker-tag">[PY]</span>
+                                    <span class="ticker-tag">[ML]</span>
+                                    <span class="ticker-tag">[FRED]</span>
+                                    <span class="flip-hint gold-text">[FLIP]</span>
+                                </div>
+                            </div>
+                            <div class="card-side card-back">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.006</span>
+                                    <span class="gold-text">INFO & STACK</span>
+                                </div>
+                                <p class="card-back-desc">
+                                    Random Forest ML commodity forecaster predicting 1-day, 1-week, and 1-month futures prices with macro FRED indicator features.
+                                </p>
+                                <div class="card-back-tools monospace">
+                                    <span class="tool-label">SYSTEMS:</span> <span class="tool-val">Python, Streamlit, FRED API, yfinance, pytest</span>
+                                    <br>
+                                    <span class="tool-label">ML/MATH:</span> <span class="tool-val">Random Forest, XGBoost, ARIMA, StandardScaler, SHAP</span>
+                                </div>
+                                <div class="card-back-bottom">
+                                    <a href="https://github.com/arindam0025/Commodity-Price-Predictor" target="_blank" class="btn-back-link monospace">> VIEW SOURCE</a>
+                                    <span class="flip-hint-back gold-text monospace">[BACK]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7: AI Behavioral Finance -->
+                    <div class="project-card-wrapper">
+                        <div class="project-card">
+                            <div class="card-side card-front">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.007</span>
+                                    <span class="gold-text">BEHAVIORAL AI</span>
+                                </div>
+                                <div class="sparkline-container">
+                                    <svg viewBox="0 0 200 80" class="sparkline-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M 0 40 Q 40 10 80 70 T 160 30 T 200 50" fill="none" stroke="var(--accent-color)" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-project-title serif-display">Behavioral AI</h3>
+                                <div class="card-tech-front monospace">
+                                    <div class="tech-row"><span class="tech-label">CORE:</span> <span class="tech-value">React, JS (ES6+)</span></div>
+                                    <div class="tech-row"><span class="tech-label">VIZ:</span> <span class="tech-value">Recharts, HTML2Canvas</span></div>
+                                </div>
+                                <div class="card-bottom monospace">
+                                    <span class="ticker-tag">[REACT]</span>
+                                    <span class="ticker-tag">[VIZ]</span>
+                                    <span class="ticker-tag">[NLP]</span>
+                                    <span class="flip-hint gold-text">[FLIP]</span>
+                                </div>
+                            </div>
+                            <div class="card-side card-back">
+                                <div class="card-top monospace">
+                                    <span class="card-id">NAG.007</span>
+                                    <span class="gold-text">INFO & STACK</span>
+                                </div>
+                                <p class="card-back-desc">
+                                    Interactive dashboard explaining how AI and NLP mitigate cognitive biases (loss aversion, herding) in ESG investment models.
+                                </p>
+                                <div class="card-back-tools monospace">
+                                    <span class="tool-label">SYSTEMS:</span> <span class="tool-val">React 19, JavaScript (ES6+), Netlify, Vercel</span>
+                                    <br>
+                                    <span class="tool-label">BEHAVIORAL/VIZ:</span> <span class="tool-val">Recharts, HTML2Canvas, ESG rating consistency skew</span>
+                                </div>
+                                <div class="card-back-bottom">
+                                    <a href="https://github.com/arindam0025/The-Role-of-Artificial-Intelligence-" target="_blank" class="btn-back-link monospace">> VIEW SOURCE</a>
+                                    <span class="flip-hint-back gold-text monospace">[BACK]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ACT V — Publications & Credentials -->
+        <section id="publications" class="act-section">
+            <div class="container section-padding">
+                <div class="section-header">
+                    <span class="section-num monospace">04 /</span>
+                    <h2 class="section-title serif-display">PUBLICATIONS</h2>
+                </div>
+
+                <!-- Journal Citations List -->
+                <div class="publications-list">
+                    
+                    <div class="pub-entry-wrapper">
+                        <div class="pub-entry">
+                            <div class="pub-index monospace">01 //</div>
+                            <div class="pub-details">
+                                <h4 class="pub-title serif-display">Options Pricing under Illiquidity Frameworks</h4>
+                                <p class="pub-citation monospace">
+                                    Arindam Nag. (2025). <span class="gold-text">Elsevier</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-entry-wrapper">
+                        <div class="pub-entry">
+                            <div class="pub-index monospace">02 //</div>
+                            <div class="pub-details">
+                                <h4 class="pub-title serif-display">Machine Learning Integrated DCF &amp; LBO Valuation Framework</h4>
+                                <p class="pub-citation monospace">
+                                    Arindam Nag. (2024). <span class="gold-text">SSRN Research Series</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-entry-wrapper">
+                        <div class="pub-entry">
+                            <div class="pub-index monospace">03 //</div>
+                            <div class="pub-details">
+                                <h4 class="pub-title serif-display">ESG &amp; Climate Analytics Research</h4>
+                                <p class="pub-citation monospace">
+                                    Arindam Nag. (2024). <span class="gold-text">SSRN</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-entry-wrapper">
+                        <div class="pub-entry">
+                            <div class="pub-index monospace">04 //</div>
+                            <div class="pub-details">
+                                <h4 class="pub-title serif-display">Embedded Finance in Action</h4>
+                                <p class="pub-citation monospace">
+                                    Arindam Nag. (2023). <span class="gold-text">IGI Global</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub-entry-wrapper">
+                        <div class="pub-entry">
+                            <div class="pub-index monospace">05 //</div>
+                            <div class="pub-details">
+                                <h4 class="pub-title serif-display">Liquidity at the Speed of AI</h4>
+                                <p class="pub-citation monospace">
+                                    Arindam Nag. (2026). <span class="gold-text">MPRA / LMU Munich</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Exchange-style Publisher Logos -->
+                <div class="exchange-ticker-wrapper">
+                    <div class="ticker-label monospace">EXCHANGE PUBLISHERS:</div>
+                    <div class="exchange-ticker-content monospace">
+                        <span>ELSEVIER</span> <span class="ticker-dot">•</span>
+                        <span>SSRN</span> <span class="ticker-dot">•</span>
+                        <span>IGI GLOBAL</span> <span class="ticker-dot">•</span>
+                        <span>MPRA / LMU MUNICH</span> <span class="ticker-dot">•</span>
+                        <span>ELSEVIER</span> <span class="ticker-dot">•</span>
+                        <span>SSRN</span> <span class="ticker-dot">•</span>
+                        <span>IGI GLOBAL</span> <span class="ticker-dot">•</span>
+                        <span>MPRA / LMU MUNICH</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ACT VI — Contact / Closing (Dark Closing Footer) -->
+        <section id="contact" class="act-section flex-center">
+            <div class="container contact-container">
+                
+                <div class="closing-quote-box">
+                    <p class="closing-quote serif-display">
+                        "In investing, you are only as good as your next model."
+                    </p>
+                </div>
+
+                <!-- Command-line style contact inputs -->
+                <div class="terminal-inputs-wrapper">
+                    <div class="terminal-input-line monospace">
+                        <span class="prompt-symbol">></span> <span class="cmd-text">email:</span> 
+                        <a href="mailto:nagarindam25@gmail.com" class="cmd-link hover-magnet">nagarindam25@gmail.com</a>
+                    </div>
+                    <div class="terminal-input-line monospace">
+                        <span class="prompt-symbol">></span> <span class="cmd-text">linkedin:</span> 
+                        <a href="https://linkedin.com/in/arindam-nag-" target="_blank" class="cmd-link hover-magnet">linkedin.com/in/arindam-nag-</a>
+                    </div>
+                    <div class="terminal-input-line monospace">
+                        <span class="prompt-symbol">></span> <span class="cmd-text">github:</span> 
+                        <a href="https://github.com/arindam0025" target="_blank" class="cmd-link hover-magnet">github.com/arindam0025</a>
+                    </div>
+                </div>
+
+                <div class="contact-cta">
+                    <a href="mailto:nagarindam25@gmail.com" class="btn btn-terminal hover-magnet">
+                        <span class="btn-text">[ INITIALIZE CORRESPONDENCE ]</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Closing Footer -->
+            <footer class="closing-footer">
+                <div class="footer-text serif-display">
+                    "Built with Python, R, and an unreasonable obsession with margins."
+                </div>
+            </footer>
+        </section>
+
+    </main>
+
+    <!-- HIDDEN EASTER EGG TERMINAL -->
+    <div id="easter-terminal" class="easter-terminal-popup hidden">
+        <div class="terminal-header monospace">
+            <span class="terminal-title">NAG_TERMINAL.EXE</span>
+            <button id="terminal-close-btn" class="terminal-close-btn">×</button>
+        </div>
+        <div class="terminal-body monospace" id="terminal-body-output">
+            <!-- Simulated typewriter inputs appear here -->
+        </div>
+    </div>
+
+    <!-- Third Party Libraries via CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    
+    <!-- Core Script -->
+    <script src="app.js"></script>
+</body>
+</html>
