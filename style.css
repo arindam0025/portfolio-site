@@ -16,13 +16,20 @@
     --card-bg-back: #1A1A1A;
     
     /* Liquid Glass Effect Tokens */
-    --glass-bg: rgba(20, 20, 20, 0.45);
-    --glass-bg-hover: rgba(20, 20, 20, 0.55);
-    --glass-border: rgba(245, 240, 232, 0.08);
-    --glass-border-hover: rgba(201, 168, 76, 0.35);
-    --glass-blur: blur(18px) saturate(1.6);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(245, 240, 232, 0.04);
-    --glass-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(201, 168, 76, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-border-hover: rgba(201, 168, 76, 0.50);
+    --glass-blur: blur(20px) saturate(1.8);
+    --glass-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    --glass-shadow-hover: 
+        0 16px 48px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(201, 168, 76, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
     
     /* Layout utilities */
     --container-width: 1200px;
@@ -37,6 +44,49 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* ============ LIQUID GLASS UTILITY ============ */
+.liquid-glass {
+    position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.02) 40%,
+        transparent 60%,
+        rgba(201, 168, 76, 0.03) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.liquid-glass:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+}
+
+.liquid-glass:hover::before {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.03) 40%,
+        transparent 60%,
+        rgba(201, 168, 76, 0.06) 100%
+    );
 }
 
 html {
@@ -988,6 +1038,8 @@ body.loading {
 .pub-entry {
     display: flex;
     gap: 3rem;
+    padding: 1.5rem;
+    border-radius: 6px;
 }
 
 .pub-index {
@@ -1082,11 +1134,10 @@ body.loading {
 .terminal-inputs-wrapper {
     width: 100%;
     max-width: 500px;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
     padding: 2.5rem;
     text-align: left;
     margin-bottom: 3.5rem;
+    border-radius: 8px;
 }
 
 .terminal-input-line {
